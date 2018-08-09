@@ -4,6 +4,24 @@
     font-family: sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
+
+body {
+  min-height: 100%;
+}
+
+#map {
+    bottom:0px;
+    height: 100%;
+    left: 250px;
+    right: 0px;
+    position: absolute;
+}
+
+
 
 #sidebar {
     position: fixed;
@@ -14,19 +32,20 @@
     transition: all 500ms linear;
 }
 
+
 #sidebar.active {
     left: 0px;
-
 }
+
 
 h2 {
     color: rgba(230,230,230,0.9);
     margin: 0px;
-    padding: 15px 10px;
+    padding: 15px 40px;
     font-family: sans-serif;
     background: #151719;
-
 }
+
 
 #sidebar ul li {
     color: rgba(230,230,230,0.9);
@@ -35,13 +54,12 @@ h2 {
     border-bottom: 1px solid rgba(100,100,100,0.3);
 }
 
+
 #sidebar .toggle-btn {
-    position: absolute;
+    position: fixed;
     left: 270px;
     top: 15px;
 }
-
-
 
 
 #sidebar .toggle-btn span {
@@ -51,9 +69,6 @@ h2 {
     background: #151719;
     margin: 3px 0px;
 }
-
-
-
 
 
 #search-btn {
@@ -69,6 +84,7 @@ border:0 none;
 font-weight:bold;
 }
 
+
 #search-box {
 background: #eee;
 padding:10px;
@@ -79,4 +95,5 @@ padding:10px;
 border:0 none;
 width:160px;
  }
+
 

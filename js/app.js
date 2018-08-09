@@ -10,4 +10,10 @@ function initMap() {
     zoom: 13,
     mapTypeControl: false
   });
+  var tribeca = {lat: 40.719526, lng: -74.0089934};
+  var marker = new google.maps.Marker({
+    position: tribeca,
+    map: map,
+    title: 'First Marker!'
+  });
 }
