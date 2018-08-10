@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="initial-scale=1.0">
+  <meta content="initial-scale=1.0" name="viewport">
   <meta charset="utf-8">
   <title>Neighborhood Map</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link href="css/style.css" rel="stylesheet">
 </head>
- <body>
-  <h2>California</h2>
+<body>
   <div id="map"></div>
-<div id="sidebar">
-  <div class="toggle-btn" onclick="toggleSidebar()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <ul>
-    <div>
-    <form id="searchthis" action="/search" style="display:inline;" method="get">
-    <input id="search-box" name="q" size="40" type="text" placeholder="Search"/>
-    <input id="search-btn" value="filter" type="submit"/>
-    </form>
+  <div id="sidebar">
+    <h2>California</h2>
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <span></span> <span></span> <span></span>
     </div>
-    <li>Humboldt County</li>
-    <li>Santa Cruz</li>
-    <li>Santa Barbara</li>
-    <li>Los Angles</li>
-    <li>San Diego</li>
-  </ul>
-</div>
-<script type="text/javascript" src="js/app.js"></script>
-   <!--TODO: Call to load the API.-->
-<script async defer
- src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBxP9l-uNP_vLP3HDCmbisOHTAQAh-iPOw&callback=initMap">
-</script>
-<script src="js/Lib/knockout-3.4.2.js"></script>
+    <ul>
+      <li style="list-style: none; display: inline">
+        <div>
+          <form action="/search" id="searchthis" method="get" name="searchthis" style="display:inline;">
+            <input id="search-box" name="q" placeholder="Search" size="40" type="text"> <input id="search-btn" type="submit" value="filter">
+          </form>
+        </div>
+      </li>
+      <li>Humboldt County</li>
+      <li>Santa Cruz</li>
+      <li>Santa Barbara</li>
+      <li>Los Angles</li>
+      <li>San Diego</li>
+    </ul>
+  </div>
+  <script src="js/app.js" type="text/javascript">
+  </script> <!--TODO: Call to load the API.-->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBxP9l-uNP_vLP3HDCmbisOHTAQAh-iPOw&callback=initMap">
+  </script>
+  <script src="js/Lib/knockout-3.4.2.js">
+  </script>
 </body>
+</html>

@@ -3,65 +3,49 @@
     padding: 0px;
     font-family: sans-serif;
 }
-
 html {
-  height: 100%;
-}
-
-
-body {
-  min-height: 100%;
-}
-
-#map {
-    bottom:0px;
     height: 100%;
-    left: 250px;
+}
+body {
+    min-height: 100%;
+}
+#map {
+    bottom: 0px;
+    height: 100%;
+    left: 0px;
     right: 0px;
     position: absolute;
 }
-
-
-
-#sidebar {
-    position: fixed;
-    width: 250px;
-    height: 100%;
-    background: #151719;
-    left: -250px;
-    transition: all 500ms linear;
-}
-
-
-#sidebar.active {
-    left: 0px;
-}
-
-
 h2 {
-    color: rgba(230,230,230,0.9);
+    color: rgba(230, 230, 230, 0.9);
     margin: 0px;
     padding: 15px 40px;
     font-family: sans-serif;
     background: #151719;
 }
-
-
+#sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    background: #151719;
+    left: -250px;
+    transition: all 500ms linear;
+}
+#sidebar.active {
+    left: 0px;
+}
 #sidebar ul li {
-    color: rgba(230,230,230,0.9);
+    color: rgba(230, 230, 230, 0.9);
     list-style: none;
     padding: 15px 10px;
-    border-bottom: 1px solid rgba(100,100,100,0.3);
+    border-bottom: 1px solid rgba(100, 100, 100, 0.3);
 }
-
-
 #sidebar .toggle-btn {
     position: fixed;
     left: 270px;
     top: 15px;
 }
-
-
 #sidebar .toggle-btn span {
     display: block;
     width: 30px;
@@ -69,31 +53,25 @@ h2 {
     background: #151719;
     margin: 3px 0px;
 }
-
-
 #search-btn {
-background:#0099ff;
-color:white;
-font: 'trebuchet ms', trebuchet;
-padding:10px 20px;
-border-radius:0 5px 5px 0;
--moz-border-radius:0 5px 5px 0;
--webkit-border-radius:0 5px 5px 0;
--o-border-radius:0 5px 5px 0;
-border:0 none;
-font-weight:bold;
+    background: #0099ff;
+    color: white;
+    font: 'trebuchet ms', trebuchet;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    -o-border-radius: 0 5px 5px 0;
+    border: 0 none;
+    font-weight: bold;
 }
-
-
 #search-box {
-background: #eee;
-padding:10px;
- border-radius:5px 0 0 5px;
--moz-border-radius:5px 0 0 5px;
--webkit-border-radius:5px 0 0 5px;
--o-border-radius:5px 0 0 5px;
-border:0 none;
-width:160px;
- }
-
-
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px 0 0 5px;
+    -o-border-radius: 5px 0 0 5px;
+    border: 0 none;
+    width: 160px;
+}
