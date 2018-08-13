@@ -71,4 +71,3 @@ function populateInfoWindow(marker, infowindow) {
   }
 }
 
-
