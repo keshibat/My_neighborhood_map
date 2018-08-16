@@ -1,3 +1,31 @@
+// Create a new blank array for all the listing markers.
+var markers = [];
+var locations = [
+  {title: 'Auckland', location: {lat: 40.7713024, lng: -73.9632393}},
+  {title: 'Raglan', location: {lat: 40.7444883, lng: -73.9949465}},
+  {title: 'Napier', location: {lat: 40.7347062, lng: -73.9895759}},
+  {title: 'Ahipara', location: {lat: 40.7281777, lng: -73.984377}},
+  {title: 'New Plymouth', location: {lat: 40.7195264, lng: -74.0089934}},
+  {title: 'Wellington', location: {lat: 40.7180628, lng: -73.9961237}}
+];
+
+
+var Location = function() {
+  this.name =  ko.observableArray(["Auckland", "Raglan", "Napier", "Ahipara", 'New Plymouth', "Wellington"]);
+}
+
+
+
+// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+var ViewModel = function() {
+  this.currentLocation = ko.observable( new Location() );
+}
+
+// Activates knockout.js
+ko.applyBindings(new ViewModel());
+
+
+
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle('active');
 }
@@ -12,19 +40,7 @@ function initMap() {
   });
 
 
-// Create a new blank array for all the listing markers.
-var markers = [];
 
-// These are the real estate listings that will be shown to the user.
-// Normally we'd have these in a database instead.
-var locations = [
-  {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
-  {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
-  {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
-  {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
-  {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
-  {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
-];
 
 
   var largeInfowindow = new google.maps.InfoWindow();
