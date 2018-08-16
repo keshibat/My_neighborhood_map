@@ -1,24 +1,32 @@
 // Create a new blank array for all the listing markers.
 var markers = [];
+//Data
 var locations = [
-  {title: 'Auckland', location: {lat: 40.7713024, lng: -73.9632393}},
-  {title: 'Raglan', location: {lat: 40.7444883, lng: -73.9949465}},
-  {title: 'Napier', location: {lat: 40.7347062, lng: -73.9895759}},
-  {title: 'Ahipara', location: {lat: 40.7281777, lng: -73.984377}},
-  {title: 'New Plymouth', location: {lat: 40.7195264, lng: -74.0089934}},
-  {title: 'Wellington', location: {lat: 40.7180628, lng: -73.9961237}}
+  {name: 'Auckland', location: {lat: 40.7713024, lng: -73.9632393}},
+  {name: 'Raglan', location: {lat: 40.7444883, lng: -73.9949465}},
+  {name: 'Napier', location: {lat: 40.7347062, lng: -73.9895759}},
+  {name: 'Ahipara', location: {lat: 40.7281777, lng: -73.984377}},
+  {name: 'New Plymouth', location: {lat: 40.7195264, lng: -74.0089934}},
+  {name: 'Wellington', location: {lat: 40.7180628, lng: -73.9961237}}
 ];
 
 
-var Location = function() {
-  this.name =  ko.observableArray(["Auckland", "Raglan", "Napier", "Ahipara", 'New Plymouth', "Wellington"]);
+var Location = function(data) {
+  this.name =  ko.observableArray([data.name]);
 }
 
 
 
-// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+// ViewModel - JavaScript that defines the data and behavior of your UI
 var ViewModel = function() {
-  this.currentLocation = ko.observable( new Location() );
+  var self = this;
+  this.myLocations = ko.observableArray([]);
+  locations.forEach(function(locationItem){
+    self.myLocations.push( new Location(locationItem) );
+  });
+
+
+  this.currentLocation = ko.observable( this.myLocations() [0] );
 }
 
 // Activates knockout.js

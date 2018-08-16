@@ -18,9 +18,9 @@
     <div class="toggle-btn" onclick="toggleSidebar()">
       <span></span> <span></span> <span></span>
     </div>
-    <div data-bind="with:currentLocation">
-      <ul data-bind="foreach: name">
-        <li data-bind="text: $data"></li>
+    <div>
+      <ul data-bind="foreach: myLocations">
+        <li data-bind="text: name"></li>
       </ul>
     </div>
   </div>
