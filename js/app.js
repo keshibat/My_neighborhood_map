@@ -24,10 +24,11 @@ var ViewModel = function() {
   locations.forEach(function(locationItem){
     self.myLocations.push( new Location(locationItem) );
   });
-
-
   this.currentLocation = ko.observable( this.myLocations() [0] );
+  this.filter = ko.observable("");
 }
+
+
 
 // Activates knockout.js
 ko.applyBindings(new ViewModel());

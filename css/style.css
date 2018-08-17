@@ -23,6 +23,10 @@ h2 {
     font-family: sans-serif;
     background: #151719;
 }
+
+body div form {
+    border-bottom: 50px;
+}
 #sidebar {
     position: fixed;
     width: 250px;
@@ -41,6 +45,12 @@ h2 {
     padding: 15px 10px;
     border-bottom: 1px solid rgba(100, 100, 100, 0.3);
 }
+
+#sidebar ul li:hover {
+    color: #fff;
+    background: #2196f3;
+}
+
 #sidebar .toggle-btn {
     position: fixed;
     left: 270px;
@@ -53,6 +63,7 @@ h2 {
     background: #151719;
     margin: 3px 0px;
 }
+/*
 #search-btn {
     background: #0099ff;
     color: white;
@@ -65,13 +76,10 @@ h2 {
     border: 0 none;
     font-weight: bold;
 }
+*/
 #search-box {
     background: #eee;
     padding: 10px;
-    border-radius: 5px 0 0 5px;
-    -moz-border-radius: 5px 0 0 5px;
-    -webkit-border-radius: 5px 0 0 5px;
-    -o-border-radius: 5px 0 0 5px;
     border: 0 none;
-    width: 160px;
+    width: 210px;
 }

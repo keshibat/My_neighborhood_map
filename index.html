@@ -11,8 +11,8 @@
   <div id="sidebar">
     <h2>New Zealand North Island</h2>
     <div>
-      <form action="/search" id="searchthis" method="get" name="searchthis" style="display:inline;">
-        <input id="search-box" name="q" placeholder="Search" size="40" type="text"> <input id="search-btn" type="submit" value="filter">
+      <form>
+        <input data-bind="textInput: filter" id="search-box" placeholder="Search">
       </form>
     </div>
     <div class="toggle-btn" onclick="toggleSidebar()">
