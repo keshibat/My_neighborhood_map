@@ -12,7 +12,9 @@ var locations = [
 
 
 var Location = function(data) {
-  this.name =  ko.observableArray([data.name]);
+  this.name =  data.name;
+  this.location = data.location;
+  this.marker = data.marker;
 }
 
 
@@ -25,7 +27,19 @@ var ViewModel = function() {
     self.myLocations.push( new Location(locationItem) );
   });
   this.currentLocation = ko.observable( this.myLocations() [0] );
-  this.filter = ko.observable("");
+  //Observable for text input
+  self.filter = ko.observable("");
+  // Text filter using knockout
+  self.filteredItems = ko.computed(function() {
+    var filter = this.filter().toLowerCase();
+    if (!filter) {
+        return self.myLocations();
+    } else {
+        return ko.utils.arrayFilter(self.myLocations(), function(item) {
+            return ko.utils.indexOf(item.name().toLowerCase().indexOf(filter) > -1);
+        });
+    }
+}, this);
 }
 
 
