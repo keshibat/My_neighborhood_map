@@ -19,12 +19,11 @@
       <span></span> <span></span> <span></span>
     </div>
     <div>
-      <ul data-bind="foreach: myLocations">
+      <ul data-bind="foreach: filteredItems">
         <li data-bind="text: name"></li>
       </ul>
     </div>
   </div>
-
   <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBxP9l-uNP_vLP3HDCmbisOHTAQAh-iPOw&callback=initMap">
   </script>
   <script src="js/Lib/knockout-3.4.2.js"></script>

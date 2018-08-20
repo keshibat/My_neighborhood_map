@@ -33,15 +33,14 @@ var ViewModel = function() {
   self.filteredItems = ko.computed(function() {
     var filter = this.filter().toLowerCase();
     if (!filter) {
-        return self.myLocations();
+        return this.myLocations();
     } else {
-        return ko.utils.arrayFilter(self.myLocations(), function(item) {
-            return ko.utils.indexOf(item.name().toLowerCase().indexOf(filter) > -1);
+        return ko.utils.arrayFilter(this.myLocations(), function(i) {
+            return ko.utils.indexOf(i.name().toLowerCase().indexOf(filter) > -1);
         });
     }
 }, this);
 }
-
 
 
 // Activates knockout.js
