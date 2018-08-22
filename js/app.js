@@ -28,18 +28,17 @@ var ViewModel = function() {
   });
   this.currentLocation = ko.observable( this.myLocations() [0] );
   //Observable for text input
-  self.filter = ko.observable("");
+  this.filter = ko.observable("");
   // Text filter using knockout
-  self.filteredItems = ko.computed(function() {
-    var filter = this.filter().toLowerCase();
+  this.filteredLocations = ko.computed(function() {
+    var filter = self.filter().toLowerCase();
     if (!filter) {
-        return this.myLocations();
-    } else {
-        return ko.utils.arrayFilter(this.myLocations(), function(i) {
-            return ko.utils.indexOf(i.name().toLowerCase().indexOf(filter) > -1);
-        });
+      return self.myLocations();
     }
-}, this);
+    return self.myLocations().filter(function(i) {
+      return i.name.toLowerCase().indexOf(filter) > -1;
+    });
+  });
 }
 
 
@@ -108,5 +107,4 @@ function populateInfoWindow(marker, infowindow) {
     });
   }
 }
-
 
