@@ -2,12 +2,12 @@
 var markers = [];
 //Data
 var locations = [
-  {name: 'Auckland', location: {lat: 40.7713024, lng: -73.9632393}},
-  {name: 'Raglan', location: {lat: 40.7444883, lng: -73.9949465}},
-  {name: 'Napier', location: {lat: 40.7347062, lng: -73.9895759}},
-  {name: 'Ahipara', location: {lat: 40.7281777, lng: -73.984377}},
-  {name: 'New Plymouth', location: {lat: 40.7195264, lng: -74.0089934}},
-  {name: 'Wellington', location: {lat: 40.7180628, lng: -73.9961237}}
+  {name: 'Ahipara', location: {lat: -35.178086, lng: 173.134495}},
+  {name: 'Auckland', location: {lat: -36.852956, lng: 174.746125}},
+  {name: 'Raglan', location: {lat: -37.800835, lng: 174.867898}},
+  {name: 'Napier', location: {lat: -39.489924, lng: 176.918499}},
+  {name: 'New Plymouth', location: {lat: -39.058808, lng: 174.080748}},
+  {name: 'Wellington', location: {lat: -41.073929, lng: 174.858363}}
 ];
 
 
@@ -55,7 +55,7 @@ var map;
 function initMap() {
   // Constructor creates a new map - only center and zoom are required.
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 40.7413549, lng: -73.9980244},
+    center: {lat: -38.988687, lng: 175.811486},
     zoom: 13,
     mapTypeControl: false
   });
