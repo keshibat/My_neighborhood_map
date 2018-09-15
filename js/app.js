@@ -26,7 +26,7 @@ var ViewModel = function() {
   locations.forEach(function(locationItem){
     self.myLocations.push( new Location(locationItem) );
   });
-  this.currentLocation = ko.observable( this.myLocations() [0] );
+
   //Observable for text input
   this.filter = ko.observable("");
   // Text filter using knockout
@@ -100,7 +100,12 @@ function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
     infowindow.setContent('<div>' + marker.title + '</div>');
+    marker.setAnimation( google.maps.Animation.BOUNCE ); // Bounce marker when list view item is clicked
     infowindow.open(map, marker);
+    //infowindow.open(map, place.marker); // Open info window on correct marker when list item is clicked
+    setTimeout( function() {
+        marker.setAnimation( null ); // End animation on marker after 2 seconds
+    }, 2000 );
     // Make sure the marker property is cleared if the infowindow is closed.
     infowindow.addListener('closeclick', function() {
       infowindow.marker = null;
