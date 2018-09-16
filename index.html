@@ -12,7 +12,7 @@
     <h2>New Zealand North Island</h2>
     <div>
       <form>
-        <input data-bind="textInput: filter" id="search-box" placeholder="Search">
+        <input data-bind="textInput: userInput" id="search-box" placeholder="Search">
       </form>
     </div>
     <div class="toggle-btn" onclick="toggleSidebar()">
@@ -24,7 +24,7 @@
       </ul>
     </div>
   </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBxP9l-uNP_vLP3HDCmbisOHTAQAh-iPOw&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBxP9l-uNP_vLP3HDCmbisOHTAQAh-iPOw&callback=initMap" onerror="errorHandling()">
   </script>
   <script src="js/Lib/knockout-3.4.2.js"></script>
   <script src="js/app.js" type="text/javascript"></script>

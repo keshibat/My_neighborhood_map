@@ -113,3 +113,8 @@ function populateInfoWindow(marker, infowindow) {
   }
 }
 
+/*Google maps error handling */
+function errorHandling() {
+  alert("Google Maps has failed to load. Please try again.");
+}
+
