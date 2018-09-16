@@ -13,6 +13,7 @@ var locations = [
 
 var Location = function(data) {
   this.name =  data.name;
+  this.visible = ko.observable( true );
   this.location = data.location;
   this.marker = data.marker;
 }
@@ -22,14 +23,40 @@ var Location = function(data) {
 // ViewModel - JavaScript that defines the data and behavior of your UI
 var ViewModel = function() {
   var self = this;
+  /*
   this.myLocations = ko.observableArray([]);
   locations.forEach(function(locationItem){
     self.myLocations.push( new Location(locationItem) );
   });
+  this.currentlocation = ko.observable( this.myLocations()[ 0 ] );
+  */
 
-  //Observable for text input
+  // Stores and updates userInput from index.html line 15 with a knockout.js
   this.userInput = ko.observable("");
+  // Stores and upates markers in knockout.js observable array
+  this.myLocations = ko.observableArray();
+  for ( var i = 0; i < markers.length; i++) {
+    self.myLocations.push(markers[i])
+  }
+
+  // Filter Marker
+  this.filteredLocations = ko.computed(function() {
+    var filter = self.userInput().toLowerCase();
+    if (!filter) {
+      self.myLocations().forEach(function(item){
+        item.setVisible(true);
+      });
+      return self.myLocations();
+    } else {
+      return ko.utils.arrayFilter(self.myLocations(), function(item) {
+        var match = item.name.toLowerCase().indexOf(filter) >= 0
+              item.setVisible(match);
+              return match;
+      })
+    }}, self);
+
   // Text filter using knockout
+  /*
   this.filteredLocations = ko.computed(function() {
     var filter = self.userInput().toLowerCase();
     if (!filter) {
@@ -39,6 +66,7 @@ var ViewModel = function() {
       return i.name.toLowerCase().indexOf(filter) > -1;
     });
   });
+  */
 }
 
 
@@ -117,5 +145,6 @@ function populateInfoWindow(marker, infowindow) {
 function errorHandling() {
   alert("Google Maps has failed to load. Please try again.");
 }
+
 
 
