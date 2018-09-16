@@ -28,10 +28,10 @@ var ViewModel = function() {
   });
 
   //Observable for text input
-  this.filter = ko.observable("");
+  this.userInput = ko.observable("");
   // Text filter using knockout
   this.filteredLocations = ko.computed(function() {
-    var filter = self.filter().toLowerCase();
+    var filter = self.userInput().toLowerCase();
     if (!filter) {
       return self.myLocations();
     }
@@ -117,4 +117,5 @@ function populateInfoWindow(marker, infowindow) {
 function errorHandling() {
   alert("Google Maps has failed to load. Please try again.");
 }
+
 
