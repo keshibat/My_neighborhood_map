@@ -1,9 +1,8 @@
-// Create a new blank array for all the listing markers.
 //Global Variables
-var markers = [];
 var map;
 
-//Data
+// Create a new blank array for all the listing markers.
+var markers = [];
 var locations = [
   {name: 'Ahipara', location: {lat: -35.178086, lng: 173.134495}},
   {name: 'Auckland', location: {lat: -36.852956, lng: 174.746125}},
@@ -74,24 +73,19 @@ function errorHandling() {
   alert("Google Maps has failed to load. Please try again.");
 }
 
-
 var Location = function(data) {
   this.name =  data.name;
-  this.visible = ko.observable( true );
   this.location = data.location;
   this.marker = data.marker;
 }
-
-
 // ViewModel - JavaScript that defines the data and behavior of your UI
 var ViewModel = function() {
   var self = this;
   // Stores and updates userInput from index.html line 15 with a knockout.js
   this.userInput = ko.observable("");
   // Stores and upates markers in knockout.js observable array
-  this.myLocations = ko.observableArray([]);
+  this.myLocations = ko.observableArray();
   //Iterates over markers array and creates copies in the locations observable array
-  this.markers = ko.observableArray( locations );
   for ( var i = 0; i < markers.length; i++) {
     self.myLocations.push(markers[i])
   }
