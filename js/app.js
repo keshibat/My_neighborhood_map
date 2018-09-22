@@ -1,3 +1,6 @@
+//Global Variables
+var map;
+
 // Create a new blank array for all the listing markers.
 var markers = [];
 //Data
@@ -9,6 +12,68 @@ var locations = [
   {name: 'New Plymouth', location: {lat: -39.058808, lng: 174.080748}},
   {name: 'Wellington', location: {lat: -41.073929, lng: 174.858363}}
 ];
+
+function initMap() {
+  // Constructor creates a new map - only center and zoom are required.
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -38.988687, lng: 175.811486},
+    zoom: 13,
+    mapTypeControl: false
+  });
+
+  var largeInfowindow = new google.maps.InfoWindow();
+  //all lists to adjust the boundaries of the map
+  var bounds = new google.maps.LatLngBounds();
+  // The following group uses the location array to create an array of markers on initialize.
+  for (var i = 0; i < locations.length; i++) {
+    // Get the position from the location array.
+    var position = locations[i].location;
+    var title = locations[i].name;
+    // Create a marker per location, and put into markers array.
+     var marker = new google.maps.Marker({
+      position: position,
+      map: map,
+      title: title,
+      animation: google.maps.Animation.DROP,
+      id: i
+    });
+    // Push the marker to our array of markers.
+    markers.push(marker);
+    // Create an onclick event to open an infowindow at each marker.
+    marker.addListener('click', function() {
+      populateInfoWindow(this, largeInfowindow);
+    });
+    // Extend boundaries for every marker that we make
+    bounds.extend(markers[i].position);
+  }
+  //  tell the map to fit itself to those bounds
+  map.fitBounds(bounds);
+ }
+// This function populates the infowindow when the marker is clicked. We'll only allow
+// one infowindow which will open at the marker that is clicked, and populate based
+// on that markers position.
+function populateInfoWindow(marker, infowindow) {
+  // Check to make sure the infowindow is not already opened on this marker.
+  if (infowindow.marker != marker) {
+    infowindow.marker = marker;
+    infowindow.setContent('<div>' + marker.title + '</div>');
+    marker.setAnimation( google.maps.Animation.BOUNCE ); // Bounce marker when list view item is clicked
+    infowindow.open(map, marker);
+    //infowindow.open(map, place.marker); // Open info window on correct marker when list item is clicked
+    setTimeout( function() {
+        marker.setAnimation( null ); // End animation on marker after 2 seconds
+    }, 2000 );
+    // Make sure the marker property is cleared if the infowindow is closed.
+    infowindow.addListener('closeclick', function() {
+      infowindow.marker = null;
+    });
+  }
+}
+
+//Google maps error handling
+function errorHandling() {
+  alert("Google Maps has failed to load. Please try again.");
+}
 
 
 var Location = function(data) {
@@ -75,76 +140,7 @@ ko.applyBindings(new ViewModel());
 
 
 
+// Mouserover highlighted for sidebar
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle('active');
 }
-
-var map;
-function initMap() {
-  // Constructor creates a new map - only center and zoom are required.
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -38.988687, lng: 175.811486},
-    zoom: 13,
-    mapTypeControl: false
-  });
-
-
-
-
-
-  var largeInfowindow = new google.maps.InfoWindow();
-  //all lists to adjust the boundaries of the map
-  var bounds = new google.maps.LatLngBounds();
-  // The following group uses the location array to create an array of markers on initialize.
-  for (var i = 0; i < locations.length; i++) {
-    // Get the position from the location array.
-    var position = locations[i].location;
-    var title = locations[i].title;
-    // Create a marker per location, and put into markers array.
-     var marker = new google.maps.Marker({
-      position: position,
-      map: map,
-      title: title,
-      animation: google.maps.Animation.DROP,
-      id: i
-    });
-    // Push the marker to our array of markers.
-    markers.push(marker);
-    // Create an onclick event to open an infowindow at each marker.
-    marker.addListener('click', function() {
-      populateInfoWindow(this, largeInfowindow);
-    });
-    // Extend boundaries for every marker that we make
-    bounds.extend(markers[i].position);
-  }
-  //  tell the map to fit itself to those bounds
-  map.fitBounds(bounds);
- }
-// This function populates the infowindow when the marker is clicked. We'll only allow
-// one infowindow which will open at the marker that is clicked, and populate based
-// on that markers position.
-function populateInfoWindow(marker, infowindow) {
-  // Check to make sure the infowindow is not already opened on this marker.
-  if (infowindow.marker != marker) {
-    infowindow.marker = marker;
-    infowindow.setContent('<div>' + marker.title + '</div>');
-    marker.setAnimation( google.maps.Animation.BOUNCE ); // Bounce marker when list view item is clicked
-    infowindow.open(map, marker);
-    //infowindow.open(map, place.marker); // Open info window on correct marker when list item is clicked
-    setTimeout( function() {
-        marker.setAnimation( null ); // End animation on marker after 2 seconds
-    }, 2000 );
-    // Make sure the marker property is cleared if the infowindow is closed.
-    infowindow.addListener('closeclick', function() {
-      infowindow.marker = null;
-    });
-  }
-}
-
-/*Google maps error handling */
-function errorHandling() {
-  alert("Google Maps has failed to load. Please try again.");
-}
-
-
-
