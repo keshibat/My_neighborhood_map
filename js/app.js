@@ -1,8 +1,8 @@
+// Create a new blank array for all the listing markers.
 //Global Variables
+var markers = [];
 var map;
 
-// Create a new blank array for all the listing markers.
-var markers = [];
 //Data
 var locations = [
   {name: 'Ahipara', location: {lat: -35.178086, lng: 173.134495}},
@@ -69,7 +69,6 @@ function populateInfoWindow(marker, infowindow) {
     });
   }
 }
-
 //Google maps error handling
 function errorHandling() {
   alert("Google Maps has failed to load. Please try again.");
@@ -84,26 +83,18 @@ var Location = function(data) {
 }
 
 
-
 // ViewModel - JavaScript that defines the data and behavior of your UI
 var ViewModel = function() {
   var self = this;
-  /*
-  this.myLocations = ko.observableArray([]);
-  locations.forEach(function(locationItem){
-    self.myLocations.push( new Location(locationItem) );
-  });
-  this.currentlocation = ko.observable( this.myLocations()[ 0 ] );
-  */
-
   // Stores and updates userInput from index.html line 15 with a knockout.js
   this.userInput = ko.observable("");
   // Stores and upates markers in knockout.js observable array
-  this.myLocations = ko.observableArray();
+  this.myLocations = ko.observableArray([]);
+  //Iterates over markers array and creates copies in the locations observable array
+  this.markers = ko.observableArray( locations );
   for ( var i = 0; i < markers.length; i++) {
     self.myLocations.push(markers[i])
   }
-
   // Filter Marker
   this.filteredLocations = ko.computed(function() {
     var filter = self.userInput().toLowerCase();
@@ -119,21 +110,7 @@ var ViewModel = function() {
               return match;
       })
     }}, self);
-
-  // Text filter using knockout
-  /*
-  this.filteredLocations = ko.computed(function() {
-    var filter = self.userInput().toLowerCase();
-    if (!filter) {
-      return self.myLocations();
-    }
-    return self.myLocations().filter(function(i) {
-      return i.name.toLowerCase().indexOf(filter) > -1;
-    });
-  });
-  */
 }
-
 
 // Activates knockout.js
 ko.applyBindings(new ViewModel());
