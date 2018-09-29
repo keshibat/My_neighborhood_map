@@ -1,6 +1,6 @@
 //Global Variables
 var map;
-
+var largeInfowindow;
 // Create a new blank array for all the listing markers.
 var markers = [];
 var locations = [
@@ -19,10 +19,9 @@ function initMap() {
     zoom: 13,
     mapTypeControl: false
   });
-
-  var largeInfowindow = new google.maps.InfoWindow();
   //all lists to adjust the boundaries of the map
   var bounds = new google.maps.LatLngBounds();
+  largeInfowindow = new google.maps.InfoWindow();
   // The following group uses the location array to create an array of markers on initialize.
   for (var i = 0; i < locations.length; i++) {
     // Get the position from the location array.
@@ -47,6 +46,8 @@ function initMap() {
   }
   //  tell the map to fit itself to those bounds
   map.fitBounds(bounds);
+  // Activates knockout.js
+  ko.applyBindings(new ViewModel());
  }
 // This function populates the infowindow when the marker is clicked. We'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based
@@ -106,12 +107,9 @@ var ViewModel = function() {
     }}, self);
 }
 
-// Activates knockout.js
-ko.applyBindings(new ViewModel());
-
-
 
 // Mouserover highlighted for sidebar
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle('active');
 }
+
