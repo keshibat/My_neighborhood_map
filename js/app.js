@@ -31,7 +31,7 @@ function initMap() {
      var marker = new google.maps.Marker({
       position: position,
       map: map,
-      title: title,
+      name: title,
       animation: google.maps.Animation.DROP,
       id: i
     });
