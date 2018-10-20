@@ -56,7 +56,7 @@ function populateInfoWindow(marker, infowindow) {
   // Check to make sure the infowindow is not already opened on this marker.
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
-    infowindow.setContent('<div>' + marker.title + '</div>');
+    infowindow.setContent('<div>' + marker.name + '</div>');
     marker.setAnimation( google.maps.Animation.BOUNCE ); // Bounce marker when list view item is clicked
     infowindow.open(map, marker);
     //infowindow.open(map, place.marker); // Open info window on correct marker when list item is clicked
@@ -90,6 +90,7 @@ var ViewModel = function() {
   for ( var i = 0; i < markers.length; i++) {
     self.myLocations.push(markers[i])
   }
+
   // Filter Marker
   this.filteredLocations = ko.computed(function() {
     var filter = self.userInput().toLowerCase();
