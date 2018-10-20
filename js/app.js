@@ -90,7 +90,10 @@ var ViewModel = function() {
   for ( var i = 0; i < markers.length; i++) {
     self.myLocations.push(markers[i])
   }
-
+  //Animates the markers and opens the infowindow when text in the listview is clicked
+  this.listViewClick = function(marker) {
+    google.maps.event.trigger(marker, 'click');
+  }
   // Filter Marker
   this.filteredLocations = ko.computed(function() {
     var filter = self.userInput().toLowerCase();
