@@ -90,6 +90,17 @@ var ViewModel = function() {
   for ( var i = 0; i < markers.length; i++) {
     self.myLocations.push(markers[i])
   }
+  // Stores and upates weather Info
+  this.imagePath = ko.observable("");
+  this.temperature = ko.observable("");
+  this.weather = ko.observable("");
+
+  var apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=03d50e04ac1ff057206fb92d6d047092`;
+  $.getJSON(apiEndpoint, data => {
+        this.imagePath(`https://openweathermap.org/img/w/${data.weather[0].icon}.png`);
+        this.temperature(data.main.temp - 273.15);
+        this.weather(data.weather[0].main);
+    }).fail(() => alert("Cannot fetch weather data from the servers. Please try again later."));        // Error handling.
   //Animates the markers and opens the infowindow when text in the listview is clicked
   this.listViewClick = function(marker) {
     google.maps.event.trigger(marker, 'click');
@@ -109,6 +120,7 @@ var ViewModel = function() {
               return match;
       })
     }}, self);
+
 }
 
 
