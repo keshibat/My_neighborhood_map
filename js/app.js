@@ -95,7 +95,7 @@ var ViewModel = function() {
   this.temperature = ko.observable("");
   this.weather = ko.observable("");
 
-  var apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?q=New York&appid=03d50e04ac1ff057206fb92d6d047092';
+  var apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?q=Raglan&appid=03d50e04ac1ff057206fb92d6d047092';
   $.getJSON(apiEndpoint, data => {
         this.imagePath(`https://openweathermap.org/img/w/${data.weather[0].icon}.png`);
         this.temperature(data.main.temp - 273.15);

@@ -21,7 +21,7 @@
     </div>
     <div>
       <ul data-bind="foreach: filteredLocations">
-        <li data-bind="text: name"></li>
+        <li data-bind="text: name, click: $parent.listViewClick""></li>
       </ul>
     </div>
     <div class="weather">

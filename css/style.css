@@ -83,3 +83,8 @@ body div form {
     border: 0 none;
     width: 210px;
 }
+
+
+#weather {
+    color: rgba(230, 230, 230, 0.9);
+}
